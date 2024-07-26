@@ -43,6 +43,8 @@ def categorias(categoria):
     for produto_filtrado in produtos_filtrados:
         informacoes_produtos_filtrados.append((produto_filtrado[0], produto_filtrado[1], produto_filtrado[2], produto_filtrado[3]))
 
-    return informacoes_produtos_filtrados
+    return flask.render_template("categoria.html",
+                                 produtos_filtrados=informacoes_produtos_filtrados,
+                                 categoria=categoria)
 
 
