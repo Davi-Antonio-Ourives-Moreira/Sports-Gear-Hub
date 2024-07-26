@@ -34,6 +34,12 @@ def adicionar_produto_carrinho(nome_p, preco_p, imagem_p, id_p):
 
 @app.get("/categoria/<categoria>")
 def categorias(categoria):
+    banco_dados_carrinho = Banco_Dados_Carrinho()
+
+    verificar_quantidade_produtos_carrinho = banco_dados_carrinho.Dados_Produtos_Carrinho()
+
+    verificar_quantidade_produtos_carrinho = len(verificar_quantidade_produtos_carrinho)
+
     produtos_filtrados = requests.get(f"http://127.0.0.1:5000/categoria_produtos/{categoria}")
 
     produtos_filtrados = produtos_filtrados.json()
@@ -45,6 +51,7 @@ def categorias(categoria):
 
     return flask.render_template("categoria.html",
                                  produtos_filtrados=informacoes_produtos_filtrados,
-                                 categoria=categoria)
+                                 categoria=categoria,
+                                 quantidade_produtos_carrinho=verificar_quantidade_produtos_carrinho)
 
 
