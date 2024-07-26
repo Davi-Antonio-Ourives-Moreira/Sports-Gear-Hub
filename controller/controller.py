@@ -1,7 +1,7 @@
 import flask
 import requests
-
 from repository import Banco_Dados_Carrinho
+from services import Pesquisas
 
 app = flask.Flask(__name__)
 
@@ -53,5 +53,13 @@ def categorias(categoria):
                                  produtos_filtrados=informacoes_produtos_filtrados,
                                  categoria=categoria,
                                  quantidade_produtos_carrinho=verificar_quantidade_produtos_carrinho)
+
+@app.post("/pesquisas")
+def pesquisas_produtos():
+    input_pesquisa = flask.request.form["pesquisa"]
+
+    pesquisa = Pesquisas(input_pesquisa)
+
+    return pesquisa.Produto_Pesquisado()
 
 
