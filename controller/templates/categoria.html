@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Sports Gear Hub</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/style_categorias.css') }}">
+
+    </head>
+
+    <body>
+        <header>
+            <a href="/"><img src="{{ url_for('static', filename='images/logos/logo_loja.png') }}"  alt="" srcset=""></a>
+        </header>
+
+        <main>  
+              <nav>
+                <ul>
+                    <li><a class="rota_anterior" href="/">Início</a></li>
+                    <li class="division_rota">/</li>
+                    <li><a  class="rota_sucessora" href="/categoria/{{ categoria }}">{{ categoria }}</a></li>
+                </ul>
+              </nav>
+
+              <section class="produtos_filtrados"> 
+        
+                <div class="produtos">
+                    
+                    {% for p in produtos_filtrados %}
+                        <div>
+                            <img src="{{ url_for('static', filename='images/imagens_produtos/'+p[3]+'/'+p[2]) }}"  alt="" srcset="">
+
+                            <p class="nome_produto">{{p[0]}}</p>
+
+                            <p class="preco_produto">R$ {{p[1]}}</p>
+
+                            <a href="/adicionar-produtos-carrinho/{{p[0]}}/{{p[1]}}/{{p[2]}}/{{p[3]}}" class="link_adicionar_carrinho">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    {% endfor %}
+            
+        </main>
+
+        <footer>
+            <p>Sports Gear Hub &copy; Davi Antonio 2024</p>
+        </footer>
+        
+    </body>
+</html>
