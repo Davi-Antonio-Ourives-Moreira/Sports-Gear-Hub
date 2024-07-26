@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #292525;
+    background-color: #383434; 
 }
 
 header{
@@ -122,11 +122,119 @@ header nav .carrinho{
     text-decoration: none;
 }
 
-.produtos_em_destaque p{
+.titulo_produtos_destaque{
     color: whitesmoke;
     position: relative;
-    left: 5%;
+    left: 5.5%;
     top: 50px;
-    width: 100px;
+    width: 300px;
     font-size: 25px;
+}
+
+.produtos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    top: 60px;
+    text-align: center;
+}
+
+.produtos div{
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 216px;
+}
+
+.produtos div img{
+    width: 200px;
+    height: 200px;
+}
+
+.nome_produto{
+    text-align: center;
+}
+
+.preco_produto{
+    text-align: center;
+}
+
+.link_adicionar_carrinho{
+    display: inline-block;
+    padding: 10px 100px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cesta_vazia{
+    position: relative;
+    top: 45px;
+    
+}
+
+.x_cesta{
+    position: absolute;
+    color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.camisas_populares{
+    position: relative;
+    top: 250px;
+    text-align: center;
+}
+
+.camisas{
+    display: flex;
+}
+
+.camisas img{
+    width: 20%;
+    height: 300px;
+}
+
+.titulo_camisas_populares{
+    display: inline-block;
+    color: white;
+    width: 300px;
+    font-size: 25px;
+}
+
+.tenis_populares{
+    position: relative;
+    top: 250px;
+    text-align: center;
+}
+
+.tenis{
+    display: flex;
+}
+
+.tenis img{
+    width: 20%;
+    height: 300px;
+}
+
+footer{
+    width: 100%;
+    position: relative;
+    top: 300px;
+    background-color: #141313;
+    height: 200px;
+}
+
+footer p{
+    position: relative;
+    top: 160px;
+    text-align: center;
+    color: #fff;
 }
