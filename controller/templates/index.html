@@ -7,6 +7,8 @@
 
         <title>Sports Gear Hub</title>
 
+        <link rel="icon" href="{{ url_for('static', filename='images/logos/logo_loja.png') }}" type="image/png" sizes="64x64">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
@@ -24,6 +26,31 @@
         <header>
             <a href="/"><img src="{{ url_for('static', filename='images/logos/logo_loja.png') }}"  alt="" srcset=""></a>
 
+            {% with messages = get_flashed_messages() %}
+                {% if messages[0] == "produto_existente_carrinho" %}
+                    <div class="alerts">
+                        <div class="alert_produto_carrinho" id="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-diamond-fill" viewBox="0 0 16 16">
+                                <path d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+    
+                            <p>Esse produto já está no carrinho</p>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const alertElement = document.getElementById('alert');
+
+                                // Define um temporizador para ocultar o alerta após 2 segundos
+                                setTimeout(() => {
+                                    alertElement.style.opacity = '0'; // Faz o alerta desaparecer
+                                }, 2000); // 2000 milissegundos = 2 segundos
+                            });
+                        </script>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
             <nav>
                 <form action="/pesquisas" method="post">
                     <input type="text" placeholder="Pesquisar" name="pesquisa">
@@ -40,9 +67,9 @@
                     </svg>
                 </button>
 
-                {% if quantidade_produtos_carrinho > 1%}
+                {% if quantidade_produtos_carrinho >= 1%}
                     <div class="quantidade_produtos_carrinho">
-                        <p>0</p>
+                        <p>{{ quantidade_produtos_carrinho }}</p>
                     </div>
                 {% endif %}
 
@@ -59,19 +86,53 @@
                             <svg class="x_cesta" xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                             </svg>
-                        {% else %}
 
                         {% endif %}
 
+                        {% if quantidade_produtos_carrinho > 0 %}
+                            {% for produtos_carrinho in todos_produtos_carrinho %}
+                                <div class="todos_produtos_carrinho">
+                                    <div class="produto_carrinho">
+                                        <img src="{{ url_for('static', filename='images/imagens_produtos/'+produtos_carrinho[3]+'/'+produtos_carrinho[2]) }}"  alt="" srcset="">
+    
+                                        <p>{{produtos_carrinho[0]}}</p>
+    
+                                        <span class="preco_produto">R$ {{produtos_carrinho[1]}}</span>
+
+                                        <a href="/remover-produtos-carrinho/{{produtos_carrinho[0]}}/{{produtos_carrinho[1]}}/{{produtos_carrinho[2]}}/{{produtos_carrinho[3]}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                            <div class="compra">
+                                <p class="preco_total_carrinho">Total: </p> 
+                                <span class="preco">{{preco_total_produtos_carrinho}}</span>
+                                <p class="frete_carrinho">Frete: Grátis</p>
+                                <a href=""><span>Comprar</span></a>
+                            </div>
+                        {% endif %}
                         
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages[0] == "deixar_carrinho_aberto" %}
+                                <script>
+                                    document.getElementById('modal_bg').style.display = 'flex';
+                                    document.getElementById('modal').style.display = 'block';
+                                </script>
+                            {% endif %}
+                        {% endwith %}
                     
                     </div>
                 </div>
-                
-                    
-                
+                   
             </nav>
         </header>
+
 
         <main>
             <section class="categorias">
