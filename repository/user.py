@@ -24,11 +24,20 @@ class Banco_Dados_Carrinho(object):
         self.cursor.execute("INSERT INTO carrinho(nome_produto, preco_produto, imagem_produto, id_produto) VALUES(%s,%s,%s,%s)", (nome_produto, preco_produto, imagem_produto, id_produto))
 
     def Remover_Produto_Carrinho(self, imagem_identificadora_produto):
-        pass
+        self.cursor.execute("DELETE FROM carrinho WHERE imagem_produto=%s ", (imagem_identificadora_produto, ))
+
+    def Verificar_Produto_Repetido(self, imagem_identificadora_produto):
+        self.cursor.execute("SELECT * FROM carrinho WHERE imagem_produto=%s", (imagem_identificadora_produto, ))
+
+        self.verificar_produto_repetido  = list(self.cursor.fetchall())
+
+        return self.verificar_produto_repetido
 
     def Dados_Produtos_Carrinho(self):
         self.cursor.execute("SELECT * FROM carrinho")
 
         self.dados_produtos_carrinho = list(self.cursor.fetchall())
+
+        print(self.dados_produtos_carrinho)
 
         return self.dados_produtos_carrinho
