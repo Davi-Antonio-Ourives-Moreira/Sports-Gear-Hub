@@ -65,13 +65,15 @@ header nav .carrinho{
     height: 20px;
     border-radius: 10px;
     top: 52px;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .quantidade_produtos_carrinho p{
-    position: relative;
-    left: 4.2px;
-    top: -2.8px;
+    margin: 0;
+    font-size: 12px;
 }
 
 .carrinho_aberto_bg{
@@ -238,3 +240,125 @@ footer p{
     text-align: center;
     color: #fff;
 }
+
+.alerts{
+    position: relative;
+    top: -170px;
+}
+
+.alert_produto_carrinho{
+    display: flex;
+    background-color: #FFF3CD;
+    border: 1.5px solid #ffe69c;
+    width: 330px;
+    border-radius: 5px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;     
+    left: 50%;     
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease-out;
+}
+
+.alert_produto_carrinho svg{
+    color: #664d03;
+    position: relative;
+    top: 8px;
+    left: -10px;
+}
+
+.alert_produto_carrinho p{
+    position: relative;
+    top: 7px;
+    left: 5px;
+    color: #664d03;
+
+}
+
+
+.carrinho_aberto .produto_carrinho{
+    display: flex;
+    margin-top: 10px;
+    width: 350px;
+    height: 50px;
+}
+
+.carrinho_aberto .produto_carrinho img{
+    width: 50px;
+    position: relative;
+    height: 50px;
+    top: 0;
+    left: 0px;
+    
+}
+
+.carrinho_aberto .produto_carrinho p{
+    position: relative;
+    margin-top: 100px;
+    top: -90px;
+    left: 20px;
+    height: 50px;
+    
+}
+
+.carrinho_aberto .produto_carrinho span{
+    position: relative;
+    left: 35px;
+    top: 10px;
+    height: 50px;
+    
+}
+
+.carrinho_aberto .produto_carrinho a{
+    position: relative;
+    top: 6px;
+    left: 50px;
+}
+
+.carrinho_aberto .produto_carrinho a svg{
+    color: #383434;
+}
+
+.compra{
+    width: 200px;
+    height: 95px;
+    position: relative;
+    top: 20px;
+    border: 1px solid #141313;
+}
+
+.preco_total_carrinho{
+    position: relative;
+    left: -70px;
+}
+
+.preco{
+    position: relative;
+    top: -40px;
+}
+
+.frete_carrinho{
+    position: relative;
+    left: -43px;
+    top: -30px;
+}
+
+.compra a{
+    display: block;
+    width: 100px;
+    height: 30px;
+    line-height: 40px;
+    padding: 10px 5px;
+    background-color: #1fcc62;
+    color: #FFF;
+    text-decoration: none;
+    position: relative;
+    top: -45px;
+    left: 10px;
+}
+
+.compra a span{
+    position: relative;
+    top: -15px;
+}
+
