@@ -38,6 +38,7 @@ class Banco_Dados_Carrinho(object):
 
         self.dados_produtos_carrinho = list(self.cursor.fetchall())
 
-        print(self.dados_produtos_carrinho)
-
         return self.dados_produtos_carrinho
+
+    def Resetar_Carrinho(self):
+        self.cursor.execute("DELETE FROM carrinho")
