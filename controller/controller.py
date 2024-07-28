@@ -91,12 +91,20 @@ def categorias(categoria):
                                  todos_produtos_carrinho=produtos_carrinho,
                                  preco_total_produtos_carrinho=round(preco_total_produtos_carrinho, 2))
 
-@app.post("/pesquisas")
-def pesquisas_produtos():
+@app.post("/pesquisar")
+def pesquisar_produto():
     input_pesquisa = flask.request.form["pesquisa"]
 
-    pesquisa = Pesquisas(input_pesquisa)
+    return flask.redirect(f"/pesquisa/{input_pesquisa}")
+
+@app.get("/pesquisa/<produto_pesquisado>")
+def pesquisa(produto_pesquisado):
+    pesquisa = Pesquisas(nome_produto=produto_pesquisado)
 
     return pesquisa.Produto_Pesquisado()
+
+@app.post("/pagamento/<preco_carrinho>")
+def pagamento(preco_carrinho):
+    return preco_carrinho
 
 
