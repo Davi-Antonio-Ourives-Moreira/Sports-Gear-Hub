@@ -1,7 +1,7 @@
 import flask
 import requests
 from repository import Banco_Dados_Carrinho
-from services import Pesquisas, Carrinho
+from services import Pesquisas, Carrinho, Pagamento
 
 app = flask.Flask(__name__)
 app.secret_key = "GeeksForGeeks"
@@ -103,8 +103,38 @@ def pesquisa(produto_pesquisado):
 
     return pesquisa.Produto_Pesquisado()
 
-@app.post("/pagamento/<preco_carrinho>")
-def pagamento(preco_carrinho):
-    return preco_carrinho
+@app.post("/pagamento")
+def pagamento():
+    banco_carrinho = Banco_Dados_Carrinho()
+
+    produtos = []
+
+    preco_produtos = []
+
+    produtos_carrinho = banco_carrinho.Dados_Produtos_Carrinho()
+
+    for p in produtos_carrinho:
+        produtos.append(p[0])
+        preco_produtos.append(float(p[1]))
+
+    pagamento = Pagamento(", ".join(produtos), sum(preco_produtos))
+
+    return pagamento.Pagar()
+
+@app.get("/pagamento-efetuado-sucesso")
+def pagamento_efetuado_sucesso():
+    banco_carrinho = Banco_Dados_Carrinho()
+
+    banco_carrinho.Resetar_Carrinho()
+
+    flask.flash("pagamento_feito_sucesso")
+
+    return flask.render_template("aviso_pagamento.html")
+
+@app.get("/pagamento-cancelado")
+def pagamento_cancelado():
+    flask.flash("pagamento_cancelado")
+
+    return flask.render_template("aviso_pagamento.html")
 
 
