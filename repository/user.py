@@ -32,5 +32,3 @@ class Banco_Dados_Carrinho(object):
 
     def Resetar_Carrinho(self):
         self.cursor.execute("DELETE FROM carrinho")
-
-Banco_Dados_Carrinho()
