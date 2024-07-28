@@ -52,7 +52,7 @@
             {% endwith %}
 
             <nav>
-                <form action="/pesquisas" method="post">
+                <form action="/pesquisar" method="post">
                     <input type="text" placeholder="Pesquisar" name="pesquisa">
                     <button class="pesquisa" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -114,7 +114,10 @@
                                 <p class="preco_total_carrinho">Total: </p> 
                                 <span class="preco">{{preco_total_produtos_carrinho}}</span>
                                 <p class="frete_carrinho">Frete: Grátis</p>
-                                <a href=""><span>Comprar</span></a>
+                                
+                                <form action="">
+                                    <button type="submit">Comprar</button>
+                                </form>
                             </div>
                         {% endif %}
                         
