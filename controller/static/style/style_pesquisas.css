@@ -293,21 +293,14 @@ footer p{
     top: -30px;
 }
 
-.compra a{
-    display: block;
+.compra button{
     width: 100px;
     height: 30px;
-    line-height: 40px;
-    padding: 10px 5px;
     background-color: #1fcc62;
     color: #FFF;
-    text-decoration: none;
     position: relative;
     top: -45px;
-    left: 10px;
-}
-
-.compra a span{
-    position: relative;
-    top: -15px;
+    left: -40px;
+    border: none;
+    outline: none;
 }
