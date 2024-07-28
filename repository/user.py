@@ -2,11 +2,11 @@ import psycopg2 as ps
 
 class Banco_Dados_Carrinho(object):
     def __init__(self) -> None:
-        self.dbname = "Sports-Gear-Hub"
-        self.host = "localhost"
+        self.dbname = "delsafnf"
+        self.host = "silly.db.elephantsql.com"
         self.port = "5432"
-        self.user = "postgres"
-        self.password = "postgres"
+        self.user = "delsafnf"
+        self.password = "Mkifzlr3dvJZcx1nhwQlk98fZZVNxxYP"
 
         self.conn = ps.connect(user=self.user,
                                password=self.password,
@@ -42,3 +42,5 @@ class Banco_Dados_Carrinho(object):
 
     def Resetar_Carrinho(self):
         self.cursor.execute("DELETE FROM carrinho")
+
+Banco_Dados_Carrinho()
