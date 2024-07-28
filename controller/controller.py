@@ -20,9 +20,9 @@ def pagina_inicial():
 
     preco_total_produtos_carrinho = 0
     
-    produtos = requests.get("http://127.0.0.1:5000/dados_produtos_destaque")
+    produtos = [("Bola", 131, "Bola_Basquete_2.webp", "Basquete")] #requests.get("http://127.0.0.1:5000/dados_produtos_destaque")
 
-    produtos = produtos.json()
+    #produtos = produtos.json()
 
     for produto in produtos:
         informacoes_produtos_destaque.append((produto[0], produto[1], produto[2], produto[3]))
