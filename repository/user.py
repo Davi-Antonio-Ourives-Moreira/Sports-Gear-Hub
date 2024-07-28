@@ -2,7 +2,17 @@ import psycopg2 as ps
 
 class Banco_Dados_Carrinho(object):
     def __init__(self) -> None:
-        self.conn =  ps.connect("postgres://denfsjjv:0sklxGgyKSz0kDe_l9H9OV2UDUmcRgT1@mahmud.db.elephantsql.com/denfsjjv")
+        self.user = "denfsjjv"
+        self.password = "0sklxGgyKSz0kDe_l9H9OV2UDUmcRgT1"
+        self.port = "5432"
+        self.host = "mahmud.db.elephantsql.com"
+        self.dbname = "denfsjjv"
+
+        self.conn =  ps.connect(user=self.user,
+                                password=self.password,
+                                port=self.port,
+                                host=self.host,
+                                dbname=self.dbname)
         
         self.cursor = self.conn.cursor()
 
