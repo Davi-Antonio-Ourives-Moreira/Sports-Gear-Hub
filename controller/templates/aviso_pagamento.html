@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Sports Gear Hub</title>
+
+        <link rel="icon" href="{{ url_for('static', filename='images/logos/logo_loja.png') }}" type="image/png" sizes="64x64">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/style_aviso_pagamento.css') }}">
+    </head>
+
+    <body>
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages[0] == "pagamento_feito_sucesso" %}
+                    <div class="icon-container" style="background-color: #4caf50;">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12 3.41 13.41 9 19 21 7 19.59 5.59z"/>
+                        </svg>
+                    </div>
+                    <div class="message">Pagamento Aprovado!</div>
+            
+                {% endif %}
+
+                {% if messages[0] == "pagamento_cancelado" %}
+                    <div class="icon-container" style="background-color: #f44336;">
+                        <svg class="icon x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M6 18L18 6M6 6l12 12" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+        
+                    <div class="message">Falha no Pagamento!</div>
+                {% endif %}
+            {% endwith %}
+
+        </div>
+
+        <div class="contagem">
+            <div class="countdown">
+                <div id="timer">0:05</div>
+                <div class="message_tempo">Voltando para a página...</div>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/animacao_aviso_pagamento.js') }}"></script>
+    </body>
+</html>
