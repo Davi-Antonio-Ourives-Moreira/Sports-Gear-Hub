@@ -8,27 +8,24 @@ class Banco_Dados_Carrinho(object):
         self.host = "mahmud.db.elephantsql.com"
         self.dbname = "denfsjjv"
 
-        self.conn =  ps.connect(user=self.user,
-                                password=self.password,
-                                port=self.port,
-                                host=self.host,
-                                dbname=self.dbname)
+        self.conn = ps.connect(user=self.user,
+                               password=self.password,
+                               host=self.host,
+                               port=self.port,
+                               dbname=self.dbname)
         
         self.cursor = self.conn.cursor()
 
+        self.conn.autocommit = True
+
         self.tabela_produtos = self.cursor.execute("CREATE TABLE IF NOT EXISTS carrinho (nome_produto text, preco_produto float, imagem_produto text, id_produto text) ")
 
-        self.conn.commit()
 
     def Adicionar_Produto_Carrinho(self, nome_produto, preco_produto, imagem_produto, id_produto):
         self.cursor.execute("INSERT INTO carrinho(nome_produto, preco_produto, imagem_produto, id_produto) VALUES(%s,%s,%s,%s)", (nome_produto, preco_produto, imagem_produto, id_produto))
 
-        self.conn.commit()
-
     def Remover_Produto_Carrinho(self, imagem_identificadora_produto):
         self.cursor.execute("DELETE FROM carrinho WHERE imagem_produto=%s ", (imagem_identificadora_produto, ))
-
-        self.conn.commit()
 
     def Verificar_Produto_Repetido(self, imagem_identificadora_produto):
         self.cursor.execute("SELECT * FROM carrinho WHERE imagem_produto=%s", (imagem_identificadora_produto, ))
@@ -46,5 +43,3 @@ class Banco_Dados_Carrinho(object):
 
     def Resetar_Carrinho(self):
         self.cursor.execute("DELETE FROM carrinho")
-
-        self.conn.commit()
