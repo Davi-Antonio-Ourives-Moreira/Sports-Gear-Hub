@@ -2,7 +2,7 @@ import psycopg2 as ps
 
 class Banco_Dados_Carrinho(object):
     def __init__(self) -> None:
-        self.conn =  ps.connect("postgresql://postgres.erzymfsybfbsgsgipyhf:4W0eZX5m34m0iOkkkt3gDsEezQxOkUm2@aws-0-us-west-1.pooler.supabase.com:6543/postgres")
+        self.conn =  ps.connect("postgres://denfsjjv:0sklxGgyKSz0kDe_l9H9OV2UDUmcRgT1@mahmud.db.elephantsql.com/denfsjjv")
         
         self.cursor = self.conn.cursor()
 
