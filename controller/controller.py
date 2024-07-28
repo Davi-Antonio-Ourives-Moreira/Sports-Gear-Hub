@@ -95,6 +95,9 @@ def categorias(categoria):
 def pesquisar_produto():
     input_pesquisa = flask.request.form["pesquisa"]
 
+    if input_pesquisa == "":
+        return flask.redirect("/")
+
     return flask.redirect(f"/pesquisa/{input_pesquisa}")
 
 @app.get("/pesquisa/<produto_pesquisado>")
