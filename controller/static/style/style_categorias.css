@@ -386,6 +386,10 @@ footer p{
     .menu button{
         right: 3%;
     }
+
+    .alerts{
+        top: -130px;
+    }
 }
 
 @media screen and (max-width: 395px) {
