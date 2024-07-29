@@ -20,9 +20,9 @@ def pagina_inicial():
 
     preco_total_produtos_carrinho = 0
     
-    produtos = [("Bola", 131, "Bola_Basquete_2.webp", "Basquete")] #requests.get("http://127.0.0.1:5000/dados_produtos_destaque")
+    produtos = requests.get("https://sports-gear-hub-api.onrender.com/dados_produtos_destaque")
 
-    #produtos = produtos.json()
+    produtos = produtos.json()
 
     for produto in produtos:
         informacoes_produtos_destaque.append((produto[0], produto[1], produto[2], produto[3]))
@@ -69,7 +69,7 @@ def categorias(categoria):
 
     preco_total_produtos_carrinho = 0
 
-    produtos_filtrados = requests.get(f"http://127.0.0.1:5000/categoria_produtos/{categoria}")
+    produtos_filtrados = requests.get(f"https://sports-gear-hub-api.onrender.com/categoria_produtos/{categoria}")
 
     produtos_filtrados = produtos_filtrados.json()
 

@@ -16,7 +16,7 @@ class Pesquisas(object):
 
         self.nome_produto = nome_produto
 
-        self.pesquisa = requests.get(f"http://127.0.0.1:5000/pesquisa_produtos/{self.nome_produto}")
+        self.pesquisa = requests.get(f"https://sports-gear-hub-api.onrender.com/pesquisa_produtos/{self.nome_produto}")
 
         self.pesquisa = self.pesquisa.json()
 
