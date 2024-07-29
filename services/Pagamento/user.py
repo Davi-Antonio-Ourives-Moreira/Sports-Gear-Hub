@@ -23,8 +23,8 @@ class Pagamento(object):
                 'quantity': 1,
             }],
             mode='payment',
-            success_url="http://127.0.0.1:3030/pagamento-efetuado-sucesso",
-            cancel_url="http://127.0.0.1:3030/pagamento-cancelado",
+            success_url="https://sports-gear-hub.onrender.com/pagamento-efetuado-sucesso",
+            cancel_url="https://sports-gear-hub.onrender.com/pagamento-cancelado",
         )
 
         return flask.redirect(session.url)
