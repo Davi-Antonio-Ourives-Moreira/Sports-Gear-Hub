@@ -32,7 +32,7 @@ window.onload = function() {
     function countdown() {
         if (timeRemaining <= 0) {
             
-            window.location.href = 'http://127.0.0.1:3030/'; 
+            window.location.href = 'https://sports-gear-hub.onrender.com/'; 
             return;
         }
 
